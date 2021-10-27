@@ -75,3 +75,9 @@ default_azure_settings:
 
 is_k8s: false
 is_openshift: false
+
+
+# Keycloack SSO settings
+keycloak_admin_role: hubadmin
+keycloak_port: 443
+keycloak_protocol: https
