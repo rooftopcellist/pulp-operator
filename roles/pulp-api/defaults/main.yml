@@ -75,3 +75,6 @@ default_azure_settings:
 
 is_k8s: false
 is_openshift: false
+
+# RH SSO
+sso_managed: true

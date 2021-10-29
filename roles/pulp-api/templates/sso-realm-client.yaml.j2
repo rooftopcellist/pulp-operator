@@ -2,8 +2,8 @@
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakRealm
 metadata:
- namespace: aap
- name: example-keycloakrealm
+ namespace: "{{ ansible_operator_meta.namespace }}"
+ name: "{{ ansible_operator_meta.name }}-keycloakrealm"
 spec:
  instanceSelector:
    matchLabels:

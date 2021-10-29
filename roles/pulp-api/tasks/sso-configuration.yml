@@ -1,8 +1,49 @@
 ---
+  
+  # Is available check  
+  
+  
+  
+- name: Install KeyCloak Operator if needed
+  k8s:
+    state: present
+    namespace: "{{ ansible_operator_meta.namespace }}"
+    apply: yes
+    wait: yes
+    definition:
+      # apiVersion: ?
+      kind: Subscription
+      metadata:
+        name: "{{ ansible_operator_meta.name }}-keycloak-operator"
+      spec:
+        # ?
+        channel: stable #?
+        installPlanApproval: Automatic
+        # sourceNamespace: openshift-marketplace
+
+
+- name: Deploy KeyCloak
+  k8s:
+    state: present
+    namespace: "{{ ansible_operator_meta.namespace }}"
+    apply: yes
+    wait: yes
+    definition:
+      apiVersion: awx.ansible.com/v1beta1
+      kind: Keycloak
+      metadata:
+        name: "{{ ansible_operator_meta.name }}-keycloakrealm"
+      spec:
+        externalAccess:
+          enabled: true
+        instances: 1
+
 - name: Deploy SSO Realm & Client
   k8s:
     kind: KeycloakRealm
     definition: "{{ lookup('template', 'sso-realm-client.yaml.j2') }}"
+  when:
+    - sso_managed # key off of presence of host
 
 - name: Check for specified sso storage configuration
   k8s_info:
