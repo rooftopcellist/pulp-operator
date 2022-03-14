@@ -2,7 +2,7 @@
 deployment_type: pulp
 
 postgres_version: 12
-_postgres_image: postgres:12
+_postgres_image: postgres:13
 
 postgres_storage_requirements:
   requests:

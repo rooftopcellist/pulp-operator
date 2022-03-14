@@ -11,7 +11,7 @@ RUN cp -fr /usr/local/lib/python{{ item.value.python_version }}/site-packages/ga
 {% endif %}
 
 
-FROM centos/nginx-116-centos7:1.16
+FROM centos/nginx-116-centos7:1.20
 
 {% if quay_expire is defined %}
 LABEL quay.expires-after={{ quay_expire }}d

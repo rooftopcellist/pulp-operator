@@ -854,7 +854,7 @@ spec:
                 - name: RELATED_IMAGE_PULP_REDIS
                   value: redis:latest
                 - name: RELATED_IMAGE_PULP_POSTGRES
-                  value: postgres:12
+                  value: postgres:13
                 image: quay.io/pulp/pulp-operator:v0.8.0.dev
                 livenessProbe:
                   httpGet:
